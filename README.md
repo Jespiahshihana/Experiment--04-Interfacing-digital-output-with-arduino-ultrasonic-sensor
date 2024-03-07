@@ -1,4 +1,8 @@
 # EXPERIMENT-NO--05-Distance measurement using Ultrasonic sensor
+# DATE: 07-03-2024
+# NAME: JESPIAH SHIHANA P S
+# ROLL NUMBER: 212223040077
+# DEPARTMENT: COMPUTER SCIENCE ENGINEERING
 
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
@@ -55,38 +59,71 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### PROGRAM 
+```
+const int trigpin=10;
+const int echopin=9;
+int red=7;
+int green=6;
+long duration;
+float distance;
+void setup()
+{
+pinMode(trigpin, OUTPUT);
+pinMode(echopin, INPUT);
+pinMode(red, OUTPUT);
+pinMode(green, OUTPUT);
+Serial.begin(9600);
+}
+void loop()
+{
+digitalWrite(trigpin,LOW);
+delay(20);
+digitalWrite(trigpin,HIGH);
+delay(20);
+digitalWrite(trigpin,LOW);
+duration=pulseIn(echopin,HIGH);
+distance=duration*(0.034/2);
+Serial.print(distance);
+Serial.println("cms");
+if(distance>5)
+{
+digitalWrite(red,HIGH);
+delay(20);
+digitalWrite(red,LOW);
+delay(20);
+}
+else
+{
+digitalWrite(green,HIGH);
+delay(200);
+digitalWrite(green,HIGH);
+delay(200);
+}
+}
+```
 
+### Circuit Diagram:
+![Exp 4(a) Intro to Robotics](https://github.com/Jespiahshihana/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/144718286/03d63cb7-e538-4f9f-8c5e-8d9a73966384)
 
-
+### Schematic Diagram:
+![exp 4(b) Intro to Robotics](https://github.com/Jespiahshihana/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/144718286/ea005edb-bf19-4880-9b7e-388565074def)
 
 
 
 ### Distance vs measurement table 
+![exp 4 table Intro to Robotics](https://github.com/Jespiahshihana/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/144718286/ec721916-15bd-440e-91d6-94b111f43d7c)
 
 			
- 
-			
-			
-			
+ ### Graph:
+ ![exp 4 graph Intro to Robotics](https://github.com/Jespiahshihana/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/144718286/0f0d2f07-9432-4084-bb08-7d8eb942968c)
 
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
-			
-			
-			
 			
 			
 			Average error = sum/ number of readings 
  
-
-
-
-
-
-
-
-
-### RESULTS
+### RESULTS:
+Thus the Error value between the actual value and measured value is calculated with the
+help of ultrasonic sensor.
 
 
 
